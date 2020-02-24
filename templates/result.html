@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+#user {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin-left:20%;
+  margin-right:15%
+}
+
+
+
+</style>
+</head>
+<body>
+
+<table  class="table table-bordered" id="user">
+    <caption><h2>All Users</h2></caption>
+  <thead>
+    <tr style="background-color: #4CAF50; font-weight: bold">
+      <td scope="col" align="center">User</td>
+      <td scope="col" align="center">Profile</td>
+      <td scope="col" align="center">Start Date</td>
+      <td scope="col" align="center">End Date</td>
+    </tr>
+  </thead>
+  <tbody>
+
+   {% for key,value in result.items() %}
+    <tr>
+    <td rowspan={{ value|length }} style="background-color: #f2f2f2;vertical-align : middle;text-align:center;">{{ key }} </td>
+   {% for i in value %}
+                <td align="center"> {{ i["profile"] }} </td>
+               <td align="center"> {{ i["startDate"] }} </td>
+                <td align="center"> {{ i["endDate"] }} </td>
+            </tr>
+
+         {% endfor %}
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>

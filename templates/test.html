@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    function validateForm(form1) {
+       var s = form1["StartDate"].value
+       var e = form1["EndDate"].value
+       re = /^([0-2][0-9]|(3)[0-1])(\-)(((0)[0-9])|((1)[0-2]))(\-)\d{4}$/i
+
+    if(s != "")
+    {
+        if(!re.test(s))
+        {
+        alert("Invalid start date");
+        return false;
+        }
+    }
+    if(e != "")
+    {
+        if(!re.test(e))
+        {
+        alert("Invalid end date");
+        return false;
+        }
+    }
+}
+
+    </script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <div class="container">
+  <h2>Scheduling Task</h2>
+  <form class="form-horizontal" name = "form1" action = "http://localhost:5000/user" method = "POST" onSubmit="return validateForm(form1)">
+      <fieldset>
+          <legend>Details</legend>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="User">User:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="User" placeholder="Enter user" name="User" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Profile">Profile:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="Profile" placeholder="Enter profile" name="Profile" required>
+      </div>
+    </div>
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="StartDate">Start Date:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="StartDate" placeholder="DD-MM-YYYY" name="StartDate" required>
+      </div>
+    </div>
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="EndDate">End Date:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="EndDate" placeholder="DD-MM-YYYY" name="EndDate" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default" style="background-color: #f2f2f2">Submit</button>
+      </div>
+    </div>
+
+
+      </fieldset>
+  </form>
+      <form class="form-horizontal" name = "form1" action = "http://localhost:5000/result" method = "POST" >
+          <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default" style="background-color: #f2f2f2">View Existing Users</button>
+      </div>
+    </div>
+
+      </form>
+</div>
+
+
+
+</body>
+</html>
